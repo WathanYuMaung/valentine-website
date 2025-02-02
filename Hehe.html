@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do you love me ?</title>
+    <style> 
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffebee;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        .container.active {
+            display: block;
+        }
+        h1 {
+            color: #d32f2f;
+            font-size: 2.5em;
+        }
+        video {
+            width: 300px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        button {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #b71c1c;
+        }
+        #noButton1, #noButton2 {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="step1" class="container active">
+        <video id="video1" autoplay loop muted>
+            <source src="flowerforyou.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h1>Do you love me?</h1>
+        <button id="yesButton1">Yes</button>
+        <button id="noButton1">No</button>
+    </div>
+
+    <div id="step2" class="container">
+        <video id="video2" autoplay loop muted>
+            <source src="Marryme.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h1>Will you marry me?</h1>
+        <button id="yesButton2">Yes</button>
+        <button id="noButton2">No</button>
+    </div>
+
+    <div id="finalStep" class="container">
+        <video id="videoFinal" autoplay loop muted>
+            <source src="kiss.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h1>Yay! Now We are Married! ❤️</h1>
+    </div>
+
+    <script>
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const finalStep = document.getElementById('finalStep');
+        const yesButton1 = document.getElementById('yesButton1');
+        const noButton1 = document.getElementById('noButton1');
+        const noButton2 = document.getElementById('noButton2');
+        const yesButton2 = document.getElementById('yesButton2');
+        const video1 = document.getElementById('video1');
+        const video2 = document.getElementById('video2');
+        const videoFinal = document.getElementById('videoFinal');
+
+        noButton1.addEventListener('click', () => {
+            const x = Math.random() * (window.innerWidth - noButton1.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton1.offsetHeight);
+            noButton1.style.left = `${x}px`;
+            noButton1.style.top = `${y}px`;
+        });
+
+        yesButton1.addEventListener('click', () => {
+            video1.pause();
+            step1.classList.remove('active');
+            step2.classList.add('active');
+            video2.play();
+        });
+
+        noButton2.addEventListener('click', () => {
+            const x = Math.random() * (window.innerWidth - noButton2.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton2.offsetHeight);
+            noButton2.style.left = `${x}px`;
+            noButton2.style.top = `${y}px`;
+        });
+
+        yesButton2.addEventListener('click', () => {
+            video2.pause();
+            step2.classList.remove('active');
+            finalStep.classList.add('active');
+            videoFinal.play();
+        });
+    </script>
+</body>
+</html>
